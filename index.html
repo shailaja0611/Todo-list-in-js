@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-do list</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(219, 162, 197);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 400px;
+    background-color: white;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.header {
+    background-color: #518f51;
+    font-size: 1.5rem;
+    color: white;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 10px;
+}
+
+.input {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+input {
+    width: 50%;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+#Addtodo {
+    width: 30%;
+    padding: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: rgb(114, 107, 40);
+    border-radius: 3px;
+    border: none;
+    color: white;
+}
+
+.output {
+    margin-bottom: 20px;
+}
+
+li {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.5rem;
+    box-shadow: 0 0 2p red(255, 115, 0);
+    margin: 40px;
+    border-radius: 3px;
+    padding: 10px;
+
+}
+
+#listBtn {
+    width: 30%;
+    padding: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color:red;
+    border-radius: 3px;
+    border: none;
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+   
+
+    <div class="container">
+        <div class="header">
+            <h1>
+                Todo List
+            </h1>
+        </div>
+        <div class="input">
+            <input type="text" id="input" placeholder="Enter your  todo">
+            <button id="Addtodo">
+                Add Todo
+            </button>
+        </div>
+        <div class="output">
+            <ul id="output">
+                <li>
+                    <span>this is fist todo</span>
+                    <button id="listBtn" onclick="removeTodo(this)">Remove</button>
+                </li>
+                <li>
+                    <span>this is fist todo</span>
+                    <button id="listBtn" onclick="removeTodo(this)">Remove</button>
+                </li>
+                <li>
+                    <span>this is fist todo</span>
+                    <button id="listBtn" onclick="removeTodo(this)">Remove</button>
+                </li>
+                <li>
+                    <span>this is fist todo</span>
+                    <button id="listBtn" onclick="removeTodo(this)">Remove</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+   <script>
+   const input = document.querySelector('input');
+   const Addtodo = document.querySelector('#Addtodo');
+   const output = document.querySelector('#output');
+
+  Addtodo.addEventListener('click', () => {
+  const todo = input.value;
+  if( todo === '' ) {
+    alert('Please enter a todo');
+    return;
+  }else {
+    const li = document.createElement('li');
+    li.innerHTML = `<span>${todo}</span>
+    <button id="listBtn" onClick="removeTodo(this)">Remove</button>`
+    output.appendChild(li);
+    input.value = '';
+  }
+});
+
+function removeTodo(element){
+    console.log(element.parentNode)
+    console.log("inside remove Todo")
+    element.parentNode.remove();
+}
+</script>
+
+</body>
+</html>
